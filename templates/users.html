@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: whitesmoke;
+            padding: 50px;
+            color: black;
+        }
+        h1 {
+            color: navy;
+        }
+        p {
+            font-size: 16px; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome, {{ info.name }}!</h1>
+    <p>Address: {{ info.address }}</p>
+    <p>Phone: {{ info.phone }}</p>
+    <p>Email: {{ info.email }}</p>
+    <p>Age: {{ info.age }}</p>
+</body>
+</html>
