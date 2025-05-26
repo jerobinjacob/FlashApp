@@ -11,6 +11,7 @@ def userspage(username):
             'phone': '+91 8072749895',
             'email': 'jerobinjacob@gmail.com',
             'age': 22,
+            'gender' : 'Male',
         },
         'jeleena': {
             'name': 'Jeleena',
@@ -18,6 +19,7 @@ def userspage(username):
             'phone': '+91 9344647676',
             'email': 'jeleena@gmail.com',
             'age': 17,
+            'gender' : 'Female',
         }
     }
     if username in data:
