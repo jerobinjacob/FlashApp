@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, abort
+from flask import Blueprint, render_template, abort, request, make_response
 
 main = Blueprint('main', __name__)
 
@@ -22,7 +22,15 @@ def userspage(username):
             'gender' : 'Female',
         }
     }
+    # Request
+    custom_header = request.headers.get('X-Client-ID', 'zephony')
+    print(f'Custom Header: {custom_header}')
     if username in data:
-        return render_template("users.html", info = data[username])
+        html = render_template("users.html", info=data[username])
+        #response
+        response = make_response(html)
+        response.headers['X-Developer'] = 'Jerobin'
+        response.headers['X-Client-ID'] = custom_header
+        return response
     else:
         abort(404)
