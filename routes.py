@@ -23,14 +23,14 @@ def userspage(username):
         }
     }
     # Request
-    custom_header = request.headers.get('X-Client-ID', 'zephony')
+    custom_header = request.headers.get('Client-ID', 'zephony')
     print(f'Custom Header: {custom_header}')
     if username in data:
         html = render_template("users.html", info=data[username])
         #response
         response = make_response(html)
-        response.headers['X-Developer'] = 'Jerobin'
-        response.headers['X-Client-ID'] = custom_header
+        response.headers['Developer'] = 'Jerobin'
+        response.headers['Client-ID'] = custom_header
         return response
     else:
         abort(404)
