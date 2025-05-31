@@ -1,0 +1,5 @@
+
+
+def gender():
+    print('Male')
+
