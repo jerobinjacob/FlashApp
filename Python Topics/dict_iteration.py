@@ -15,6 +15,8 @@ print('\nBoth Keys And Values:')
 for keys, values in a.items():
     print(f'{keys} : {values}')
 
+for values in a:
+    print(values)
 
 
 
