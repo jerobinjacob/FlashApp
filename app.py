@@ -25,9 +25,8 @@ def add():
         con = get_connection()
         cur = con.cursor()
         cur.execute(
-            'INSERT INTO students (name, age, course, professor_id, favourite_professor) VALUES (%s, %s, %s, %s, %s)',
-            (name, age, course, professor_id, favourite_professor)
-        )
+            'INSERT INTO students (name, age, course, professor_id, favourite_professor) VALUES (%s, %s, %s, %s, %s)', (name, age, course, professor_id, favourite_professor))
+
         con.commit()
         cur.close()
         con.close()
