@@ -7,7 +7,7 @@ app = Flask(__name__)
 def home():
     con = get_connection()
     cur = con.cursor()
-    cur.execute('SELECT * FROM students')
+    cur.execute('select * from students')
     students = cur.fetchall()
     cur.close()
     con.close()
@@ -20,12 +20,12 @@ def add():
         age = request.form['age']
         course = request.form['course']
         professor_id = request.form['professor_id']
-        favourite_professor = request.form['favourite_professor']
+        favourite_professors = request.form['favourite_professors']
 
         con = get_connection()
         cur = con.cursor()
         cur.execute(
-            'INSERT INTO students (name, age, course, professor_id, favourite_professor) VALUES (%s, %s, %s, %s, %s)', (name, age, course, professor_id, favourite_professor))
+            'insert into students (name, age, course, professor_id, favourite_professors) values (%s, %s, %s, %s, %s)', (name, age, course, professor_id, favourite_professors))
 
         con.commit()
         cur.close()
