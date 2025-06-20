@@ -1,21 +1,43 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title> Students </title>
-</head>
-<body>
-    <h1> Student List </h1>
-    <a href='{{ url_for('add') }}'><button> Add Student </button></a>
-    <table border = '1'>
+  <head>
+    <title>Students</title>
+  </head>
+  <body>
+    <h1>Student List</h1>
+      <div>
+        <a href = '{{ url_for('add') }}'>
+          <button>Add Student</button>
+        </a>
+        <a href = '{{ url_for('delete') }}'>
+          <button>Delete Student</button>
+        </a>
+      </div>
+    <table border='1'>
         <tr>
-            <th> ID </th><th> Name </th><th> Age </th><th> Course </th><th> Professor ID </th><th> Favourite Professor </th>
+            <th> ID </th>
+            <th> Name </th>
+            <th> Age </th>
+            <th> Course </th>
+            <th> Professor Name </th>
+            <th> Favourite Professor </th>
+            <th> Edit Student </th>
         </tr>
         {% for s in students %}
-        <tr>
-            <td> {{ s[0] }} </td><td> {{ s[1] }} </td><td> {{ s[2] }} </td><td> {{ s[3] }} </td>
-            <td> {{ s[4] }} </td><td> {{ s[5] }} </td>
-        </tr>
+            <tr>
+                <td> {{ s[0] }} </td>
+                <td> {{ s[1] }} </td>
+                <td> {{ s[2] }} </td>
+                <td> {{ s[3] }} </td>
+                <td> {{ s[4] }} </td>
+                <td> {{ s[5] }} </td>
+                <td>
+                <a href="{{ url_for('update', student_id=s[0]) }}">
+                    <button> Edit </button>
+                </a>
+                </td>
+            </tr>
         {% endfor %}
     </table>
-</body>
+  </body>
 </html>
