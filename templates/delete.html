@@ -4,9 +4,10 @@
         <title> Delete Student </title>
     </head>
     <body>
-        <h1> Delete Student </h1>
+        <h1> Confirm to delete student </h1>
+
         <form method = 'POST'>
-            Student ID to delete: <input type='number' name='student_id' required><br><br>
+            Student ID to delete: <input type='number' name='student_id' value='{{ s }}'><br><br>
             <input type='submit' value='Delete'>
         </form>
     </body>

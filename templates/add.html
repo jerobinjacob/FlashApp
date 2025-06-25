@@ -5,12 +5,21 @@
     </head>
     <body>
         <h1> Add New Student </h1>
+          {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul style='color: red;'>
+              {% for message in messages %}
+                <li>{{ message }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
         <form method = 'POST'>
             Name: <input type='text' name='name'><br>
             Age: <input type='number' name='age'><br>
             Course: <input type='text' name='course'><br>
             Professor ID: <input type='number' name='professor_id'><br>
-            Favourite Professors ID: <input type='text' name='favourite_professors'><br>
+            Favourite Professors ID: <input type='number' name='favourite_professors'><br>
             <input type='submit' value='Add'>
         </form>
     </body>

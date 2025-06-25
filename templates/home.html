@@ -9,9 +9,6 @@
         <a href = '{{ url_for('add') }}'>
           <button>Add Student</button>
         </a>
-        <a href = '{{ url_for('delete') }}'>
-          <button>Delete Student</button>
-        </a>
       </div>
     <table border='1'>
         <tr>
@@ -22,6 +19,7 @@
             <th> Professor Name </th>
             <th> Favourite Professor </th>
             <th> Edit Student </th>
+            <th> Delete Student </th>
         </tr>
         {% for s in students %}
             <tr>
@@ -32,9 +30,14 @@
                 <td> {{ s[4] }} </td>
                 <td> {{ s[5] }} </td>
                 <td>
-                <a href="{{ url_for('update', student_id=s[0]) }}">
-                    <button> Edit </button>
-                </a>
+                  <a href="{{ url_for('update', student_id=s[0]) }}">
+                      <button>Edit</button>
+                  </a>
+                </td>
+                <td>
+                  <a href="{{ url_for('delete', student_id=s[0]) }}">
+                      <button>Delete</button>
+                  </a>
                 </td>
             </tr>
         {% endfor %}
