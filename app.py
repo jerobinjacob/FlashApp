@@ -83,6 +83,33 @@ def update(student_id):
         professor_id = request.form.get('professor_id')
         favourite_professors = request.form.get('favourite_professors')        
         
+        errors = []
+        if not name:
+            errors.append('Name should not be Empty.')
+        elif not name.isalpha():
+            errors.append('Name must contain only Letters.')
+        if not age:
+            errors.append('Age Should not be Empty.')
+        elif not age.isdigit():
+            errors.append('Age must contain only numbers.')
+        if not course:
+            errors.append('Course Should not be Empty.')
+        elif not course.isalpha():
+            errors.append('Course must contain only letters.')
+        if not professor_id:
+            errors.append('Professor ID should not be Empty.')
+        elif not professor_id.isdigit():
+            errors.append('Professor ID must contain only numbers.')
+        if not favourite_professors:
+            errors.append('Favourite Professor ID should not be Empty.')
+        elif not favourite_professors.isdigit():
+            errors.append('Favourite Professor ID must contain only numbers.')
+
+        if errors:
+            for error in errors:
+                flash(error)
+            return redirect(url_for('update', student_id=student_id))
+
         con = get_connection()
         cur = con.cursor()
         cur.execute('update students set name = %s, age = %s, course = %s, professor_id = %s, favourite_professors = %s where student_id = %s', (name, age, course, professor_id, favourite_professors, student_id))

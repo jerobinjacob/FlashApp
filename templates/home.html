@@ -2,15 +2,20 @@
 <html>
   <head>
     <title>Students</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
   </head>
   <body>
-    <h1>Student List</h1>
-      <div>
-        <a href = '{{ url_for('add') }}'>
-          <button>Add Student</button>
-        </a>
-      </div>
-    <table border='1'>
+      <div class="container">
+      <header>
+      <h1>Student List</h1>
+      </header>
+        <div class="top-bar">
+          <a href = '{{ url_for('add') }}'>
+            <button class="add-btn" >Add Student</button>
+          </a>
+        </div>
+      
+    <table>
         <tr>
             <th> ID </th>
             <th> Name </th>
@@ -30,17 +35,40 @@
                 <td> {{ s[4] }} </td>
                 <td> {{ s[5] }} </td>
                 <td>
-                  <a href="{{ url_for('update', student_id=s[0]) }}">
-                      <button>Edit</button>
-                  </a>
-                </td>
+                    <a href="{{ url_for('update', student_id=s[0]) }}" title="Edit">
+                        <button type="button" class="icon-btn edit">
+                            <span data-lucide="edit-2"></span>
+                        </button>
+                    </a>
+                </td>                
                 <td>
-                  <a href="{{ url_for('delete', student_id=s[0]) }}">
-                      <button>Delete</button>
-                  </a>
-                </td>
+                    <form id="delete-form-{{ s[0] }}" method="POST" action="{{ url_for('delete', student_id=s[0]) }}" style="display: inline;">
+                    <button type="button"  class="icon-btn delete" title="Delete" onclick="confirmDelete({{ s[0] }})">
+                        <span data-lucide="trash-2"></span>
+                    </button>
+                    </form>
+                </td>                
             </tr>
         {% endfor %}
     </table>
+    </div>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            if (window.lucide) {
+                lucide.createIcons();
+            } else {
+                console.error("Lucide not loaded");
+            }
+        });
+    </script>
+    <script>
+    function confirmDelete(studentId) {
+        const confirmed = confirm("Are you sure you want to delete student with ID " + studentId + "?");
+        if (confirmed) {
+            document.getElementById('delete-form-' + studentId).submit();
+        }
+    }
+</script>    
   </body>
 </html>
