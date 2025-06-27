@@ -80,11 +80,11 @@ th {
 
 /* Form Container */
 .form-box {
-    max-width: 400px;
-    margin: 40px auto;
+    width: 400px;
+    margin: 60px auto;
     padding: 30px;
     background-color: white;
-    border-radius: 12px;
+    border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
@@ -100,11 +100,14 @@ th {
     margin: 12px 0 5px;
 }
 
-.form-box input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
+.form-box input[type="text"],
+.form-box select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
 }
 
 .form-box input[type="submit"] {
